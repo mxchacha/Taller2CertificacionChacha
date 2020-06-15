@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: frgHead"></head>
+<body id="page-top">
+
+	<div id="wrapper">
+		<ul th:replace="layout :: frgSideBar"></ul>
+
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<div id="content">
+
+				<nav th:replace="layout :: frgTopBar"></nav>
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
+					</div>					
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Categor&iacute;a</th>
+								<th>A&ntilde;o Estreno</th>
+								<th>Duraci&oacute;n (min)</th>
+								<th><a class="btn btn-sm btn-success"
+									th:href="@{/pelicula/create}">&nbsp;Nuevo</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="p : ${peliculas}">
+								<td th:text="${p.nombre}"></td>
+								<td th:text="${p.categoria}"></td>
+								<td th:text="${p.anioEstreno}"></td>
+								<td th:text="${p.duracion}"></td>
+								<td><a class="btn btn-sm btn-warning"
+									th:href="@{/pelicula/update/} + ${p.idpelicula}">&nbsp;Actualizar</a>
+									<a class="btn btn-sm btn-info"
+									th:href="@{/pelicula/retrieve/} + ${p.idpelicula}">&nbsp;Consultar</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+			
+			<footer th:replace="layout :: frgFooter"></footer>
+
+		</div>
+
+	</div>
+	
+
+</body>
+</html>
